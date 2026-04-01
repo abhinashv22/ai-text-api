@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+scikit-learn
+langdetect
+transformers
+torch
+sentencepiece
