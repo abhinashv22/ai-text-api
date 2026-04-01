@@ -3,6 +3,6 @@ uvicorn
 scikit-learn
 langdetect
 transformers
-torch
+torch --index-url https://download.pytorch.org/whl/cpu
 sentencepiece
 python-multipart
