@@ -5,3 +5,4 @@ langdetect
 transformers
 torch
 sentencepiece
+python-multipart
