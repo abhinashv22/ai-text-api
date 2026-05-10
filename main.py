@@ -16,7 +16,7 @@ app = FastAPI(
 # Logging setup
 logging.basicConfig(level=logging.INFO)
 
-# 🔥 LAZY LOAD MODEL (CRITICAL FOR DEPLOYMENT)
+#  LAZY LOAD MODEL (CRITICAL FOR DEPLOYMENT)
 summarizer = None
 
 def get_summarizer():
@@ -55,7 +55,7 @@ async def word_count(request: TextRequest):
         "status": "processed"
     }
 
-# 🔥 AI Summarization (LAZY + CACHED)
+#  AI Summarization (LAZY + CACHED)
 @lru_cache(maxsize=10)
 def generate_summary(text: str):
     model = get_summarizer()
@@ -76,7 +76,7 @@ async def summarize(request: TextRequest):
     except Exception as e:
         return {"error": "Summarization failed", "details": str(e)}
 
-# 🔥 TF-IDF Keyword Extraction
+#  TF-IDF Keyword Extraction
 @app.post("/keywords")
 async def keywords(request: TextRequest):
     vectorizer = TfidfVectorizer(stop_words='english', max_features=5)
@@ -91,7 +91,7 @@ async def similarity(req: CompareRequest):
     similarity_score = cosine_similarity(vectorizer)[0][1]
     return {"similarity": float(similarity_score)}
 
-# 🔥 Language Detection
+#  Language Detection
 @app.post("/language")
 async def detect_language(request: TextRequest):
     text = request.text.strip()
